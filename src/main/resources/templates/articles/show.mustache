@@ -1,0 +1,29 @@
+{{>layouts/header}}
+
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Title</th>
+        <th scope="col">Content</th>
+    </tr>
+    </thead>
+    <tbody>
+    {{#article}}  {{! entity를 가져옴.Model에 등록된 데이터는 #을 통해 가져옴}}
+    <tr>
+        <th>{{id}}</th>   {{! article에 담겨진 데이터 가져오기}}
+        <td>{{title}}</td>
+        <td>{{content}}</td>
+    </tr>
+    {{/article}}
+    </tbody>
+</table>
+<a href="/articles/{{article.id}}/edit" class="btn btn-primary">Edit</a>  {{!수정 링크 생성. article data의 id를 가져올때는 #입력 안함}}
+{{!http메소드 중 삭제시에는 정석적으로는 delete요청이 보내져야하나 html에서는 지원 안함. post와 get만 지원. 임의로 get방식을 제공하는 a태그 즉, 링크를 사용 }}
+<a href="/articles/{{article.id}}/delete" class="btn btn-danger">Delete</a> {{!삭제 링크 생성}}
+<a href="/articles">Go to Article List</a>
+
+{{! 댓글창 추가}}
+{{>comments/_comments}}
+
+{{>layouts/footer}}

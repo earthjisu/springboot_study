@@ -1,0 +1,19 @@
+{{>layouts/header}}
+
+{{#article}} <!-- #으로 article data를 쓸 범위를 지정해줌 -->
+<form class="container" action="/articles/update" method="post">  <!--action에 이동할 위치 지정. 원래는 post가 아닌 patch사용-->
+    <input name="id" type="hidden" value="{{id}}" />   <!--몇번 article을 변경해야할지 지정 => id값을 input value에 넣어줌 id값을 hidden으로 숨겨서 던지게 함-->
+    <div class="mb-3">
+        <label class="form-label">제목</label>
+        <input type="text" class="form-control" name="title" value="{{title}}">  <!--{{#article}}{{/article}} 범위 지정으로 {{article.title}}대신 {{article}} 사용 가능 -->
+    </div>
+    <div class="mb-3">
+        <label class="form-label">내용</label>
+        <textarea class="form-control" rows="3" name="content">{{content}}</textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+    <a href="/articles/{{id}}">Back</a>
+</form>
+{{/article}}
+
+{{>layouts/footer}}

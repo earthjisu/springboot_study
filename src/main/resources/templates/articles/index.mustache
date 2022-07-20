@@ -1,0 +1,22 @@
+{{>layouts/header}}
+
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Title</th>
+        <th scope="col">Content</th>
+    </tr>
+    </thead>
+    <tbody>
+    {{#articleList}} {{! entity를 가져옴.Model에 등록된 데이터는 #을 통해 가져옴 }}
+    <tr>
+        <th>{{id}}</th>   {{! article에 담겨진 데이터 가져오기}}
+        <td><a href="/articles/{{id}}">{{title}}</a></td>  {{! title 선택시 상세페이지 반환 }}
+        <td>{{content}}</td>
+    </tr>
+    {{/articleList}}
+    </tbody>
+</table>
+<a href="/articles/new">New Article</a>  {{! <a href="요청을 보낼 링크 주소"></a>}}
+{{>layouts/footer}}
